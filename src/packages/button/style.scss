@@ -1,0 +1,97 @@
+
+@use "sass:math";
+
+@import '../styles/variable.scss';
+
+.btn {
+  outline: none;
+  background-color: #FFF;
+  border: 1px solid $border-color;
+  cursor: pointer;
+
+  & + button {
+    margin-left: 10px;
+  }
+
+
+  @each $type, $color, $tColor in ('primary', $primary, #FFF),
+  ('warning', $warning, #FFF),
+  ('error', $error, #FFF),
+  ('info', $info, $text-color),
+  ('success', $success, #FFF) {
+    &.#{$type} {
+      background-color: lighten($color, 10%);
+      
+      @if $type != 'info' {
+        color: $tColor;
+        border-color: $color;
+      }
+      @else {
+        color: $text-color;
+        border-color: $border-color;
+      }
+
+      &.ghost {
+        background-color: transparent;
+        // color: $color;
+        @if $type != 'info' {
+          color: $color;
+          border-color: $color;
+        }
+        @else {
+          color: $text-color;
+          border-color: $border-color;
+        }
+      }
+
+      &[disabled] {
+        background-color: $disabled-color;
+        border-color: $disabled-color;
+        color: #EEE;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  &.d3 {
+    box-shadow: 3px 3px 2px #CCC;
+  }
+
+  // @extend .info;
+}
+
+.xs {
+  line-height: $xs;
+  font-size: 13px;
+}
+
+.small {
+  line-height: $small;
+  font-size: 14px;
+}
+
+.middle {
+  line-height: $middle;
+  font-size: 15px;
+}
+
+.large {
+  line-height: $large;
+  font-size: 16px;
+}
+
+@each $sType, $size, $fontSize, $padding in ('xs', $xs, 13px, 6px),
+('small', $small, 14px, 8px),
+('middle', $middle, 15px, 9px),
+('large', $large, 16px, 10px) {
+  .#{$sType} {
+    line-height: $size;
+    font-size: $fontSize;
+    padding: 0 $padding;
+
+    &.round {
+      border-radius: math.div($size, 2);
+    }
+  }
+}
+
