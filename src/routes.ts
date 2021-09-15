@@ -16,6 +16,11 @@ const routes: Route[] = [
     name: '栅格',
     path: '/grid',
     component: lazy(() => import('./examples/Row')),
+  },
+  {
+    name: '滚动容器',
+    path: '/scroll',
+    component: lazy(() => import('./examples/scroll')),
   }
 ];
 
