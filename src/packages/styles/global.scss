@@ -1,0 +1,26 @@
+
+$primary: blue;
+$error: red;
+$warning: orange;
+$info: gray;
+$success: green;
+
+.primary {
+  color: $primary;
+}
+
+.error {
+  color: $error;
+}
+
+.warning {
+  color: $warning;
+}
+
+.info {
+  color: $info;
+}
+
+.success {
+  color: $success;
+}

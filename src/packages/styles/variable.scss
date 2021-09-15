@@ -1,0 +1,40 @@
+
+$perfix: 'dudu';
+
+
+$primary: blue;
+$error: red;
+$warning: orange;
+$info: #FFF;
+$success: green;
+
+$disabled-color: #CCC;
+
+$border-color: #EFEFEF;
+
+$text-color: #333;
+
+$xs: 22px;
+$small: 26px;
+$middle: 28px;
+$large: 32px;
+
+.primary {
+  color: $primary;
+}
+
+.error {
+  color: $error;
+}
+
+.warning {
+  color: $warning;
+}
+
+.info {
+  color: $info;
+}
+
+.success {
+  color: $success;
+}
