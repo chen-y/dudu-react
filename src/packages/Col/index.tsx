@@ -1,10 +1,12 @@
-import React, { PropsWithChildren, useMemo } from 'react';
+import React, { PropsWithChildren, useMemo, useContext } from 'react';
 
 import cs from 'classnames';
 
+import context from '../row/context';
+
 import './style.scss';
 
-interface ColProps {
+interface ColProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
   offset?: number;
   pull?: number;
   push?: number;
@@ -15,6 +17,8 @@ interface ColProps {
   lg?: number;
   xl?: number;
   xxl?: number;
+  className?: string;
+  styles?: React.CSSProperties;
 }
 
 function Col({
@@ -27,8 +31,12 @@ function Col({
   lg,
   xl,
   xxl,
-  span
+  span,
+  className,
+  children,
+  ...props
 }: PropsWithChildren<ColProps>) {
+  const { gutter } = useContext(context);
 
   const classes = useMemo<string[]>(() => {
     const list: string[] = [];
@@ -53,9 +61,24 @@ function Col({
     return list;
   }, [xs, sm, md, lg, xl, xxl, span, offset]);
 
+  const styles = useMemo(() => {
+    if (gutter) {
+      return {
+        paddingLeft: `${gutter / 2}px`,
+        paddingRight: `${gutter / 2}px`
+      };
+    } else {
+      return {};
+    }
+  }, [gutter]);
+
   return (
-    <div className={cs('col', ...classes)}>
-      Col
+    <div
+      className={cs('col', ...classes, className)}
+      {...props}
+      style={{ ...props.style, ...styles }}
+    >
+      {children}
     </div>
   );
 }
