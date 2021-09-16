@@ -21,7 +21,12 @@ const routes: Route[] = [
     name: '滚动容器',
     path: '/scroll',
     component: lazy(() => import('./examples/scroll')),
-  }
+  },
+  {
+    name: '图片预览',
+    path: '/perview',
+    component: lazy(() => import('./examples/imagePerview')),
+  },
 ];
 
 export default routes;
