@@ -27,6 +27,16 @@ const routes: Route[] = [
     path: '/perview',
     component: lazy(() => import('./examples/imagePerview')),
   },
+  {
+    name: 'tab',
+    path: '/tabs',
+    component: lazy(() => import('./examples/tabs')),
+  },
+  {
+    name: 'tree',
+    path: '/tree',
+    component: lazy(() => import('./examples/tree')),
+  }
 ];
 
 export default routes;
