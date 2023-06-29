@@ -24,9 +24,14 @@ const routes: Route[] = [
   },
   {
     name: '图片预览',
-    path: '/perview',
-    component: lazy(() => import('./examples/imagePerview')),
+    path: '/preview',
+    component: lazy(() => import('./examples/imagePreview')),
   },
+  {
+    name: '流程',
+    path: '/flow',
+    component: lazy(() => import('./examples/flow')),
+  }
 ];
 
 export default routes;

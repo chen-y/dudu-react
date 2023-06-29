@@ -19,5 +19,6 @@ render();
 const m = module as any;
 
 if (m.hot) {
-  m.hot.accept('./index.ts', render);
+  console.info(m)
+  m.hot.accept('./App.tsx', render);
 }
