@@ -14,3 +14,18 @@ body {
 #app {
   height: 100%;
 }
+
+.layout {
+  display: flex;
+  // flex-direction: column;
+
+  &-side {
+    width: 220px;
+    border: 1px solid #EEE;
+  }
+
+  &-content {
+    flex: 1;
+    padding: 15px;
+  }
+}

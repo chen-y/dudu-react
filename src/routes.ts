@@ -1,4 +1,3 @@
-
 import { lazy } from 'react';
 import { RouteProps } from 'react-router';
 
@@ -31,7 +30,12 @@ const routes: Route[] = [
     name: '流程',
     path: '/flow',
     component: lazy(() => import('./examples/flow')),
-  }
+  },
+  {
+    name: 'Icon',
+    path: '/icon',
+    component: lazy(() => import('./examples/icon')),
+  },
 ];
 
 export default routes;
