@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Node from './Node';
+import Operator from './Node';
 
 import './content.style.scss';
 
@@ -13,9 +13,13 @@ const Content: React.FC<ContentProps> = (props) => {
   return (
     <div className="flow-canvas">
       {/* 组件内容 */}
-      <svg className="flow-root-svg" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0">
-
-        <Node />
+      <svg
+        className="flow-root-svg"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlnsXlink="http://www.w3.org/1999/xlink"
+        viewBox="0 0"
+      >
+        <Operator />
       </svg>
     </div>
   );
