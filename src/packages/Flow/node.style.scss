@@ -1,7 +1,18 @@
 .flow-node-shape {
   cursor: pointer;
 
-  rect {
-    box-shadow: 0 2px 5px #ccc;
+  &:hover {
+
+    rect {
+      filter: url(#node-shadow);
+    }
+  }
+
+  &-rect {
+    fill: #fff;
+  }
+
+  &.active &-rect {
+    fill: aqua;
   }
 }

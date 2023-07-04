@@ -10,6 +10,7 @@ interface ContentProps {
   // Props定义
 }
 
+
 const Content: React.FC<ContentProps> = (props) => {
   // 组件实现
   return (
@@ -23,6 +24,11 @@ const Content: React.FC<ContentProps> = (props) => {
         width="100%"
         height="100%"
       >
+        <defs>
+          <filter id="node-shadow">
+            <feDropShadow ></feDropShadow>
+          </filter>
+        </defs>
         <Edge />
         <Operator />
       </svg>

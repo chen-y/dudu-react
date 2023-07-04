@@ -15,7 +15,6 @@ export interface OperatorProps {
   name?: string;
 }
 
-const opFill = '#fff';
 const opRadius = 10;
 const opFontSize = 12;
 
@@ -30,15 +29,16 @@ function Operator(props: OperatorProps) {
 
   return (
     <g className="flow-node">
-      <g className="flow-node-shape">
+      <g className="flow-node-shape active">
         <title>{name}</title>
 
         <rect
+          className="flow-node-shape-rect"
           x={x}
           y={y}
           width={width}
           height={height}
-          fill={opFill}
+          // fill={opFill}
           rx={opRadius}
         />
 
@@ -58,7 +58,8 @@ function Operator(props: OperatorProps) {
         <text
           fontSize={opFontSize}
           x={x + height}
-          y={y + height / 2 + opFontSize / 2}
+          y={y + height / 2 + (opFontSize / 2)}
+          width={100}
         >
           {name}
         </text>
