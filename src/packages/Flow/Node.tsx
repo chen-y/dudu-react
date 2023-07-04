@@ -42,6 +42,19 @@ function Operator(props: OperatorProps) {
           rx={opRadius}
         />
 
+        <foreignObject x={x} y={y} width={height} height={height}>
+          <div
+            style={{
+              width: height,
+              height: height,
+              textAlign: 'center',
+              lineHeight: `${height}px`,
+            }}
+          >
+            <Icon type="shujuji" />
+          </div>
+        </foreignObject>
+
         <text
           fontSize={opFontSize}
           x={x + height}
@@ -50,7 +63,12 @@ function Operator(props: OperatorProps) {
           {name}
         </text>
 
-        <foreignObject x={x} y={y} width={height} height={height}>
+        <foreignObject
+          x={x + width - height}
+          y={y}
+          width={height}
+          height={height}
+        >
           <div
             style={{
               width: height,

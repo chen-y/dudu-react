@@ -2,6 +2,8 @@ import React from 'react';
 
 import Operator from './Node';
 
+import Edge from './Edge';
+
 import './content.style.scss';
 
 interface ContentProps {
@@ -19,6 +21,7 @@ const Content: React.FC<ContentProps> = (props) => {
         xmlnsXlink="http://www.w3.org/1999/xlink"
         viewBox="0 0"
       >
+        <Edge />
         <Operator />
       </svg>
     </div>
