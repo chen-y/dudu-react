@@ -1,0 +1,17 @@
+.flow-connection {
+
+
+  .flow-connection-hot {
+    stroke: transparent;
+    cursor: pointer;
+
+    &:hover {
+      stroke: rgba($color: #000000, $alpha: 0.1);
+    }
+  }
+
+  // .flow-connection-progress {
+  //   stroke-dasharray: 200 200;
+  //   stroke-dashoffset: 10;
+  // }
+}

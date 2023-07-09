@@ -1,91 +1,87 @@
 import React from 'react';
 
-import InputPort from './InputPort';
-import OutputPort from './OutputPort';
+import { observer } from 'mobx-react-lite';
 
-import Icon from '../Icon';
+import Port from './port';
+// import OutputPort from './OutputPort';
+
+import OperatorImpl from './OperatorImpl';
+
+import OperatorShape from './OperatorShape';
 
 import './node.style.scss';
 
-export interface OperatorProps {
-  x?: number;
-  y?: number;
-  width?: number;
-  height?: number;
-  name?: string;
+export const opWidth = 200;
+export const opHeight = 42;
+
+interface GetPortPosArgs {
+  opX: number;
+  opY: number;
+  opW: number;
+  opH: number;
+  len: number;
+  current: number;
 }
 
-const opRadius = 10;
-const opFontSize = 12;
+export const getInPortPos = (req: GetPortPosArgs) => {
+  const { opX, opY, opW, len, current } = req;
+  const parts = len + 1;
+  const partW = opW / parts;
+  const pX = opX + (current + 1) * partW;
+  const pY = opY;
+  return [pX, pY];
+};
+
+export const getOutPortPos = (req: GetPortPosArgs) => {
+  const { opX, opY, opW, opH, len, current } = req;
+  const parts = len + 1;
+  const partW = opW / parts;
+  const pX = opX + (current + 1) * partW;
+  const pY = opY + opH;
+  return [pX, pY];
+};
+
+export interface OperatorProps {
+  op: OperatorImpl;
+
+  height?: number;
+  width?: number;
+}
 
 function Operator(props: OperatorProps) {
-  const {
-    x = 100,
-    y = 100,
-    width = 200,
-    height = 42,
-    name = '数据集算子',
-  } = props;
+  const { op } = props;
 
   return (
     <g className="flow-node">
-      <g className="flow-node-shape active">
-        <title>{name}</title>
+      <OperatorShape op={op} width={opWidth} height={opHeight} />
 
-        <rect
-          className="flow-node-shape-rect"
-          x={x}
-          y={y}
-          width={width}
-          height={height}
-          // fill={opFill}
-          rx={opRadius}
-        />
+      {op.inPorts.map((inPort, i) => {
+        const portPos = getInPortPos({
+          opX: inPort.op.x,
+          opY: inPort.op.y,
+          opH: opHeight,
+          opW: opWidth,
+          current: i,
+          len: op.inPorts.length,
+        });
+        return (
+          <Port port={inPort} key={inPort.id} x={portPos[0]} y={portPos[1]} />
+        );
+      })}
 
-        <foreignObject x={x} y={y} width={height} height={height}>
-          <div
-            style={{
-              width: height,
-              height: height,
-              textAlign: 'center',
-              lineHeight: `${height}px`,
-            }}
-          >
-            <Icon type="shujuji" />
-          </div>
-        </foreignObject>
-
-        <text
-          fontSize={opFontSize}
-          x={x + height}
-          y={y + height / 2 + (opFontSize / 2)}
-          width={100}
-        >
-          {name}
-        </text>
-
-        <foreignObject
-          x={x + width - height}
-          y={y}
-          width={height}
-          height={height}
-        >
-          <div
-            style={{
-              width: height,
-              height: height,
-              textAlign: 'center',
-              lineHeight: `${height}px`,
-            }}
-          >
-            <Icon type="shujuji" />
-          </div>
-        </foreignObject>
-      </g>
-      <InputPort />
-      <OutputPort />
+      {op.outPorts.map((outPort, i) => {
+        const [pX, pY] = getOutPortPos({
+          opX: outPort.op.x,
+          opY: outPort.op.y,
+          opH: opHeight,
+          opW: opWidth,
+          current: i,
+          len: op.outPorts.length,
+        });
+        return <Port port={outPort} key={outPort.id} x={pX} y={pY} />;
+      })}
     </g>
   );
 }
 
-export default Operator;
+export default observer(Operator);

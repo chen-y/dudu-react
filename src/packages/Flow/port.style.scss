@@ -1,0 +1,37 @@
+.port {
+  cursor: pointer;
+
+  .hover-shape {
+    visibility: hidden;
+  }
+
+  .allow-link-tip {
+    visibility: hidden;
+    fill: green;
+  }
+
+  .disabled-link-tip {
+    visibility: hidden;
+    fill: red;
+  }
+
+  &.disabled-link {
+    cursor: not-allowed;
+
+    .disabled-link-tip {
+      visibility: visible;
+    }
+  }
+
+  &.allow-link {
+    .allow-link-tip {
+      visibility: visible;
+    }
+  }
+
+  &:hover {
+    .hover-shape {
+      visibility: visible;
+    }
+  }
+}

@@ -1,13 +1,13 @@
-interface PortDesc {
+export interface PortDesc {
   supportNodes: string[];
 }
 
-interface Choice {
+export interface Choice {
   value: string;
   label: string;
 }
 
-interface ParameterDesc {
+export interface ParameterDesc {
   type: string; // 参数类型
 
   choices: Choice[];
@@ -17,45 +17,39 @@ interface ParameterDesc {
   required?: boolean;
 }
 
-interface NodeDesc {
+export interface OperatorDesc {
   type: string; // 节点类型
 
-  name: string; // 节点名称
+  name?: string; // 节点名称
 
-  params: ParameterDesc[]; // 节点可用参数
+  params?: ParameterDesc[]; // 节点可用参数
 
-  doc: string; // 说明文档
+  doc?: string; // 说明文档
 
-  tip: string; // 说明提示
+  tip?: string; // 说明提示
 }
 
-class Port {
-  parentNode: FlowNode;
-  
-
-  supportNodes: FlowNode[];
+export interface OpPortDesc {
+  id: string;
 }
 
-class InPort extends Port {
+export interface OpDesc {
+  desc: OperatorDesc;
+  id: string;
+  x: number;
+  y: number;
+  inPorts?: OpPortDesc[];
+  outPorts?: OpPortDesc[];
 }
 
-class OutPort extends Port {
+export interface ConnectionDesc {
+  startOpId: string;
+  startOpPortId: string;
+  endOpId: string;
+  endOpPortId: string;
 }
 
-
-class FlowNode {
-  desc: NodeDesc;
-}
-
-class Edge {
-  startNodePort?: OutPort;
-
-  endNodePOrt?: InPort;
-}
-
-class Flow {
-
-  nodes: FlowNode[];
-
-  edges: Edge[];
+export interface FlowDesc {
+  ops?: OpDesc[];
+  connections?: ConnectionDesc[];
 }

@@ -1,6 +1,25 @@
-@import url('//at.alicdn.com/t/c/font_141848_v4b331olm1j.css');
+@import url('//at.alicdn.com/t/c/font_141848_j8lwv8dlm4j.css');
 
 
 .iconfont {
   font-size: inherit !important;
+}
+
+.icon-loading {
+  display: inline-block;
+  animation: loading 1s linear infinite;
+}
+
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  // 50% {
+  //   transform: rotate(360deg);
+  // }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
