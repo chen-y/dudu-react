@@ -1,0 +1,30 @@
+.du-menu {
+  // list-style-type: none;
+  padding: 0;
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .du-sub-menu {
+    .du-sub-menu {
+      // text-indent: 3;
+      padding-left: 20px;
+    }
+  }
+}
+
+.du-sub-menu {}
+
+.du-menu-item {
+  line-height: 38px;
+
+  &:hover {
+    background-color: rgba(cadetblue, 0.2);
+  }
+
+  &_active {
+    background-color: rgba(cadetblue, 1);
+  }
+}

@@ -36,6 +36,11 @@ const routes: Route[] = [
     path: '/icon',
     component: lazy(() => import('./examples/icon')),
   },
+  {
+    name: '菜单（menu）',
+    path: '/menu',
+    component: lazy(() => import('./examples/menu')),
+  },
 ];
 
 export default routes;
