@@ -1,12 +1,21 @@
-import React from "react";
+import React from 'react';
 
-import Item from './Item';
+import cs from 'classnames';
 
-function Menu() {
+import MenuItem from './Item';
+import SubMenu from './SubMenu';
 
-  return <div></div>
-}
+import './style.scss';
 
-Menu.Item = Item;
+interface MenuProps extends React.HTMLAttributes<HTMLDivElement> {}
+
+const Menu: React.FC<React.PropsWithChildren<MenuProps>> = (props) => {
+  const { children, className } = props;
+  return (
+    <div className={cs('du-menu', className)}>
+      <ul>{children}</ul>
+    </div>
+  );
+};
 
 export default Menu;

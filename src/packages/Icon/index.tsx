@@ -20,9 +20,9 @@ export interface IconProps extends React.HTMLAttributes<HTMLSpanElement> {
 }
 
 function Icon(props: IconProps) {
-  const { type } = props;
+  const { type, ...restProps } = props;
 
-  return <span className={`iconfont icon-${type}`} />;
+  return <span {...restProps} className={`iconfont icon-${type}`} />;
 }
 
 export default Icon;

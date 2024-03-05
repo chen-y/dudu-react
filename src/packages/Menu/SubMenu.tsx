@@ -1,10 +1,13 @@
-import React from "react";
+import React from 'react';
 
-function SubMenu() {
+import cs from 'classnames';
 
-  return (
-    <div></div>
-  )
-}
+interface SubMenuProps {}
+
+const SubMenu: React.FC<SubMenuProps> = () => {
+  return <li className={cs('du-sub-menu')}>SubMenu</li>;
+};
+
+SubMenu.displayName = 'DuSubMenu';
 
 export default SubMenu;

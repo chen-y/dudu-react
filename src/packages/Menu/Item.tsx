@@ -1,12 +1,27 @@
-import React from "react";
+import React from 'react';
 
-function Item() {
+import cs from 'classnames';
 
-  return (
-    <div>
-
-    </div>
-  );
+interface MenuItemProps extends React.HTMLProps<HTMLLIElement> {
+  code: string;
 }
 
-export default Item;
+const MenuItem: React.FC<React.PropsWithChildren<MenuItemProps>> = (props) => {
+  const { className, children, onClick, code, ...restProps } = props;
+  const _onClick = (evt: React.MouseEvent<HTMLLIElement>) => {
+    onClick?.(evt);
+  };
+  return (
+    <li
+      {...restProps}
+      onClick={_onClick}
+      className={cs('du-menu-item', className)}
+    >
+      {children}
+    </li>
+  );
+};
+
+MenuItem.displayName = 'DuMenuItem';
+
+export default MenuItem;

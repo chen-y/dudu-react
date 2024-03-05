@@ -37,9 +37,9 @@ const routes: Route[] = [
     component: lazy(() => import('./examples/icon')),
   },
   {
-    name: '抽奖',
-    path: '/raffle',
-    component: lazy(() => import('./examples/raffle')),
+    name: '菜单（menu）',
+    path: '/menu',
+    component: lazy(() => import('./examples/menu')),
   },
 ];
 
