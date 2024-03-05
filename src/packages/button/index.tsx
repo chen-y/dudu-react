@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from 'react';
+import React, { HTMLAttributes, PropsWithChildren } from 'react';
 
 import cs from 'classnames';
 
@@ -6,7 +6,7 @@ import { ThemeTypes, ThemeSizes } from '../interface';
 
 import './style.scss';
 
-interface ButtonProps {
+interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   type?: ThemeTypes | 'link';
   size?: ThemeSizes;
   round?: boolean;
@@ -29,11 +29,12 @@ function Button({
 }: PropsWithChildren<ButtonProps>) {
   return (
     <button
+      {...props}
       className={cs('btn', type, size, {
         disabled,
         round,
         ghost,
-        d3
+        d3,
       })}
       disabled={disabled}
     >
