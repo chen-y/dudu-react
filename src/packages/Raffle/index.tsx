@@ -1,4 +1,4 @@
 import Raffle from './raffle';
+import Scrape from './scrape';
 
-export { Raffle };
-export default Raffle;
+export { Raffle, Scrape };

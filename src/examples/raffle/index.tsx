@@ -1,6 +1,6 @@
 import React, { useRef, useLayoutEffect } from 'react';
 
-import Raffle from '../../packages/Raffle';
+import { Raffle, Scrape } from '../../packages/Raffle';
 import Button from '../../packages/button';
 
 export default function RaffleDemo() {
@@ -36,6 +36,10 @@ export default function RaffleDemo() {
       <Raffle data={data} ref={instanceRef}></Raffle>
       <Button onClick={onStart}>启动</Button>
       <Button onClick={onStop}>停止</Button>
+
+      <div>
+        <Scrape width={200} height={200} />
+      </div>
     </div>
   );
 }

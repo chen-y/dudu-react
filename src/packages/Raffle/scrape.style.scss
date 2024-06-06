@@ -1,0 +1,31 @@
+.scrape-wrapper {
+  overflow: hidden;
+  vertical-align: top;
+  position: relative;
+
+  .scrape-cvs-wrapper {
+    position: relative;
+    z-index: 2;
+  }
+
+  .scrape-cvs {
+    // background-color: #ccc;
+  }
+
+  .scrape-bonus {
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+    &-text {
+      color: red;
+      vertical-align: middle;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
