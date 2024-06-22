@@ -46,6 +46,16 @@ const routes: Route[] = [
     path: '/raaffle',
     component: lazy(() => import('./examples/raffle')),
   },
+  {
+    name: '抽屉',
+    path: '/drawer',
+    component: lazy(() => import('./examples/drawer')),
+  },
+  {
+    name: '进度',
+    path: '/progress',
+    component: lazy(() => import('./examples/progress')),
+  },
 ];
 
 export default routes;

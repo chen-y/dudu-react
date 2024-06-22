@@ -14,7 +14,7 @@ function App() {
           <div className="layout-side">
             {routes.map(({ name, path }) => {
               return (
-                <div>
+                <div key={`${name}-${path}`}>
                   <Link to={path as string}>{name}</Link>
                 </div>
               );

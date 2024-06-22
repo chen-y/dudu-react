@@ -2,6 +2,13 @@
   box-sizing: border-box;
 }
 
+:root {
+  --white: #fff;
+  --base-padding: 12px;
+
+  --base-radius: 6px;
+}
+
 :root,
 body {
   height: 100%;

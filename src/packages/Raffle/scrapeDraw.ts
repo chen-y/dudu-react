@@ -1,4 +1,3 @@
-
 class ScrapeDraw {
   el: HTMLCanvasElement;
 
@@ -33,7 +32,7 @@ class ScrapeDraw {
     ctx.lineTo(clientX - left, clientY - top);
     ctx.stroke();
     // ctx.clip();
-  }
+  };
 
   up = (evt: MouseEvent) => {
     const ctx = this.el.getContext('2d');
@@ -43,13 +42,12 @@ class ScrapeDraw {
 
     document.removeEventListener('mousemove', this.move);
     document.removeEventListener('mouseup', this.up);
-  }
-
+  };
 
   draw() {
     const { width, height } = this.el;
     const ctx = this.el.getContext('2d');
-    
+
     // 画遮盖物
     ctx.save();
     ctx.beginPath();
@@ -59,7 +57,7 @@ class ScrapeDraw {
     ctx.restore();
     ctx.save();
     ctx.translate(width / 2, height / 2);
-    ctx.rotate(-Math.PI * 45 / 180);
+    ctx.rotate((-Math.PI * 45) / 180);
     ctx.fillStyle = 'red';
     ctx.fillText('刮一刮', 0, 0);
     ctx.fillText('刮一刮', -10, -10);
