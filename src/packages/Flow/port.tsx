@@ -65,6 +65,7 @@ function InPort(props: InPortProps) {
         connecting = new Connecting();
         port.op.flow.setConnecting(connecting);
         connecting.setStart(port);
+        connecting.setEndPosition(endX, endY);
       } else {
         connecting.setEndPosition(endX, endY);
       }

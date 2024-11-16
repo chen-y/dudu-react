@@ -1,0 +1,113 @@
+.tf {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.tf-content {
+  height: 100%;
+  display: flex;
+  // overflow: hidden;
+}
+
+.tf-side {
+  width: 280px;
+  border-right: 1px solid #eee;
+}
+
+.tf-body {
+  flex: 1;
+  overflow: auto;
+}
+
+.tf-side-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.menu-filter {
+  padding: 5px;
+
+  > input {
+    height: 32px;
+    border: 1px solid #eee;
+    outline: none;
+    padding: 5px;
+    width: 100%;
+    border-radius: 3px;
+  }
+}
+
+.tf-menus {
+  flex: 1;
+  overflow: auto;
+  padding: 0 5px;
+}
+
+.tf-menu {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.tf-menu-item {
+  // border-bottom: 1px solid #eee;
+
+  .tf-menu-item {
+    // text-indent: 15px;
+    padding-left: 15px;
+    .tf-menu-item_title {
+      // padding-left: 15px;
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+}
+
+.tf-menu-item_title {
+  padding: 10px 0;
+  border-radius: 4px;
+
+  &:hover {
+    background-color: #eee;
+  }
+}
+
+.tf-drag-preview {
+  position: fixed;
+  pointer-events: none;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.tf-task-view {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  position: relative;
+  background-color: #eee;
+}
+
+
+.tf-view-size {
+  width: 6000px;
+  height: 6000px;
+}
+
+.tf-view-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  width: 80%;
+  height: 80%;
+  box-shadow: 2px 2px 30px #ccc;
+  border-radius: 5px;
+}

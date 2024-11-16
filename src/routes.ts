@@ -56,6 +56,11 @@ const routes: Route[] = [
     path: '/progress',
     component: lazy(() => import('./examples/progress')),
   },
+  {
+    name: '任务流',
+    path: '/task-flow',
+    component: lazy(() => import('./examples/task-flow')),
+  },
 ];
 
 export default routes;
