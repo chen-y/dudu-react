@@ -1,6 +1,7 @@
 import  React from 'react';
 import { useDrop } from 'react-dnd';
 import { ItemTypes, Menu } from './interfaces';
+import Node from './node';
 
 export default function TaskView() {
   const [{}, drop] = useDrop<Menu>(() => {
@@ -16,7 +17,14 @@ export default function TaskView() {
     <div className="tf-task-view" ref={drop}>
       {/* <div className="tf-view-size" /> */}
       <div className="tf-view-container">
-        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%"></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%">
+          <defs>
+            <filter id="nodeHoverShadow">
+              <feDropShadow dx="1" dy="1" stdDeviation="2"/>
+            </filter>
+          </defs>
+          <Node />
+        </svg>
       </div>
     </div>
   );

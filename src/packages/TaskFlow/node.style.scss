@@ -1,0 +1,55 @@
+
+.tf-node {
+
+  &:hover {
+    cursor: pointer;
+
+    .tf-node-shape {
+      filter: url('#nodeHoverShadow');
+
+    }
+  }
+}
+
+.tf-node-shape {
+
+}
+
+.tf-node-body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.tf-node-icon {
+  width: 40px;
+  height: 100%;
+}
+
+.tf-node-name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 40px;
+  font-size: 14px;
+}
+
+.tf-node-desc {
+  height: 100%;
+  width: 40px;
+}
+
+.tf-node-port {
+
+  .tf-node-port_shape {
+    visibility: hidden;
+  }
+
+  &:hover {
+    .tf-node-port_shape {
+      visibility: visible;
+      fill: greenyellow;
+    }
+  }
+}
