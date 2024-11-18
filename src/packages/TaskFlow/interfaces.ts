@@ -9,3 +9,8 @@ export interface Menu {
   label?: React.ReactNode;
   items?: Menu[];
 }
+
+export interface ConnectionType<T extends Record<string, any>> {
+  output: T;
+  input: T;
+}

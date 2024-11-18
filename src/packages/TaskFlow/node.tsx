@@ -1,11 +1,21 @@
 import React from "react";
 import Port from "./port";
 import './node.style.scss';
+
+export interface NodeProps {
+  width?: number;
+  height?: number;
+  title?: React.ReactNode;
+  icon?: React.ReactNode;
+  showPort?: boolean;
+  borderColor?: string;
+  bgColor?: string;
+}
 export default function Node() {
 
   const onMouseDown = (evt: React.MouseEvent) => {
     const { clientX, clientY } = evt;
-  }
+  };
 
   const nodeW = 200;
   const nodeH = 40;
