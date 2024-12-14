@@ -1,6 +1,7 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useContext } from 'react';
 
-import { Menu } from './interfaces';
+import { Menu, NodeSource } from './interfaces';
+
 
 import DragItem from './dragItem';
 
@@ -8,12 +9,12 @@ const defaultSearchFn = (item: Menu, searchStr?: string) => {
   return item.label === searchStr;
 };
 
-export interface SideProps {
+export interface SideProps<E> {
   menuList?: Menu[];
   menuFilter?: (item: Menu) => boolean;
 }
 
-export default function Side(props: SideProps) {
+export default function Side<E>(props: SideProps<E>) {
   const { menuList, menuFilter } = props;
   const [searchStr, setSearchStr] = useState<string>('');
 

@@ -1,9 +1,11 @@
-import  React from 'react';
+import  React, { useContext } from 'react';
 import { useDrop } from 'react-dnd';
 import { ItemTypes, Menu } from './interfaces';
+import { flowContext, TaskFlowContext } from './flowContext';
 import Node from './node';
 
 export default function TaskView() {
+  const ctx = useContext<TaskFlowContext>(flowContext);
   const [{}, drop] = useDrop<Menu>(() => {
     return {
       accept: ItemTypes.NODE,
@@ -12,6 +14,8 @@ export default function TaskView() {
       },
     }
   });
+
+  const nodeSources = ctx.taskNodes || [];
 
   return (
     <div className="tf-task-view" ref={drop}>
@@ -23,7 +27,7 @@ export default function TaskView() {
               <feDropShadow dx="1" dy="1" stdDeviation="2"/>
             </filter>
           </defs>
-          <Node />
+          {nodeSources.map((s) => <Node source={s} key={s.id} />)}
         </svg>
       </div>
     </div>

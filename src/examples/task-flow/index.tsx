@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TaskFlow from '../../packages/TaskFlow';
 
 export default function TaskFlowDemo() {
+  const [nodes, setNodes] = useState([
+    { position: { x: 100, y: 100 }, meta: {}, id: '123', source: '' },
+  ]);
   const sideProps = {
     menuList: [
       {
@@ -66,5 +69,14 @@ export default function TaskFlowDemo() {
       },
     ],
   };
-  return <TaskFlow height="100vh" sideProps={sideProps} />;
+  return (
+    <TaskFlow
+      height="100vh"
+      sideProps={sideProps}
+      taskNodes={nodes}
+      onAddNodeInFlow={(node) => {
+        setNodes((ns: any[]) => [...ns, node])
+      }}
+    />
+  );
 }

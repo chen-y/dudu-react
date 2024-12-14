@@ -4,27 +4,30 @@ import Content, { ContentProps } from './content';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import DragPrevew from './dragPreview';
-import { ConnectionType } from './interfaces';
+import { ConnectionType, NodeSource,  } from './interfaces';
+import { flowContext, InjectSource } from './flowContext';
 
 import './style.scss';
 
-interface LayoutProps<Node extends any> extends ContentProps {
+interface LayoutProps<Node extends Record<string, any>>
+  extends ContentProps<Node>, InjectSource<Node> {
   height?: React.CSSProperties['height'];
   width?: React.CSSProperties['width'];
-  connections?: ConnectionType<Node>[];
-  onAddNodeInFlow?: (output: Node, input: Node) => void;
-  onNodeConnect?: (output: Node, input: Node) => void;
 }
 
-export default function Layout<Node extends any>(props: LayoutProps<Node>) {
-  const { height, width, ...restProps } = props;
+export default function Layout<
+  Node extends Record<string, any> = Record<string, any>
+>(props: LayoutProps<Node>) {
+  const { height, width, connections, taskNodes, onAddNodeInFlow, onNodeConnect, ...restProps } = props;
   return (
     <DndProvider backend={HTML5Backend}>
-      <div className="task-flow" style={{ height, width }}>
-        <Header />
-        <Content {...restProps} />
-        <DragPrevew />
-      </div>
+      <flowContext.Provider value={{ connections, taskNodes, onAddNodeInFlow, onNodeConnect }}>
+        <div className="task-flow" style={{ height, width }}>
+          <Header />
+          <Content {...restProps} />
+          <DragPrevew />
+        </div>
+      </flowContext.Provider>
     </DndProvider>
   );
 }
